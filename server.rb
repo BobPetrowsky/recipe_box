@@ -29,7 +29,7 @@ end
 
 get "/recipes/:id" do
   id = params[:id]
-  query = 'SELECT recipes.name, recipes.id, recipes.description, recipes.instructions, ingredients.name FROM recipes JOIN recipes.id ON ingredients.recipe_id'
+  query = 'SELECT recipes.name, recipes.id, recipes.description, recipes.instructions, ingredients.name AS ingredient, ingredients.recipe_id FROM recipes JOIN ingredients ON ingredients.recipe_id = recipes.id WHERE recipes.id = $1'
 
   db_connection do |conn|
     @recipe = conn.exec(query, [id])

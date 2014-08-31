@@ -1,4 +1,18 @@
 <h1><%= @recipe[0]['name'] %></h1>
 
-<h2>Ingredients:</h2>
+<h2>Description:</h2>
 
+<p><%= @recipe[0]['description'] %></p>
+
+<h2>Ingredients:</h2>
+<ul>
+  <% @recipe.each do |ingredient| %>
+    <li>
+      <%= ingredient['ingredient'] %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Instructions:</h2>
+
+<p><%= @recipe[0]['instructions'] %></p>
